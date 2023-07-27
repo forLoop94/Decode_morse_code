@@ -38,9 +38,13 @@ MORSE_TABLE = {
 }.freeze
 
 def decode_char(morse_char)
-  MORSE_CODE[morse_char] || '' # return empty string if not
+  MORSE_TABLE[morse_char] || '' # return empty string if not
 end
 
 def decode_word(morse_word)
   morse_word.split.map { |morse_char| decode_char(morse_char) }.join
+end
+
+def decode_message(morse_message)
+  morse_message.split('  ').map { |morse_word| decode_word(morse_word) }.join(' ')
 end
