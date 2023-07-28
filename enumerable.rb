@@ -12,4 +12,12 @@ module MyEnumerable
     end
     false
   end
+
+  def filter
+    arr = []
+    @list.each do |element|
+      arr << element if yield(element)
+    end
+    arr
+  end
 end
